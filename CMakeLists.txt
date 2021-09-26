@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 project(ProjectEulerProblem)
 
+# Benchmark Project
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
 
-add_executable(ProjectEulerProblem Src/Main.cpp)
+add_executable(ProjectEulerProblem src/Main.cpp src/impl/Benchmark.cpp)
+
+target_link_directories(ProjectEulerProblem PUBLIC src/include)
