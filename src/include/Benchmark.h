@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <iostream>
+#include <cstdint>
 
 struct Result
 {
@@ -26,8 +26,6 @@ struct CurrentRun
     const uint32_t maxThreads;
     const uint64_t maxNumber;
 
-    CurrentRun(RunType type, bool showTime, bool showResult, uint32_t maxThreads, uint64_t maxNumber);
-
     void runSinglecore() const;
 
     void runMulticore() const;
@@ -36,4 +34,4 @@ private:
     static Result runTest(uint64_t begin, uint64_t end);
 };
 
-static CurrentRun* identifyRun();
+CurrentRun identifyRun();

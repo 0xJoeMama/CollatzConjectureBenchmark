@@ -8,19 +8,15 @@ int main()
 {
     // this benchmark
     // it grinds nombers and tells you how long it took.
-    // it also support multithreading
-    CurrentRun* currentRun = identifyRun();
+    // it also supports multithreading
+    CurrentRun currentRun = identifyRun();
 
-    switch (currentRun->type) {
+    switch (currentRun.type) {
         case SINGLECORE:
-            currentRun->runSinglecore();
+            currentRun.runSinglecore();
             break;
         case MULTICORE:
-            currentRun->runMulticore();
+            currentRun.runMulticore();
             break;
-        default:
-            throw std::exception();
     }
-
-    delete currentRun;
 }

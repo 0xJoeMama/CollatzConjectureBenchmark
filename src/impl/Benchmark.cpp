@@ -2,10 +2,13 @@
 // Created by JoeMama on 26/09/2021.
 //
 
+// Implementation of
 #include "../include/Benchmark.h"
+
 #include <chrono>
 #include <vector>
 #include <future>
+#include <iostream>
 
 typedef std::chrono::time_point<std::chrono::system_clock> TimePoint;
 
@@ -123,11 +126,7 @@ Result CurrentRun::runTest(uint64_t begin, uint64_t end)
     return {maxIndex, currentMax};
 }
 
-CurrentRun::CurrentRun(RunType type, bool showTime, bool showResult, uint32_t maxThreads, uint64_t maxNumber)
-        : type(type), showTime(showTime), showResult(showResult), maxThreads(maxThreads), maxNumber(maxNumber)
-{ }
-
-CurrentRun* identifyRun()
+CurrentRun identifyRun()
 {
     RunType type;
 
@@ -153,9 +152,9 @@ CurrentRun* identifyRun()
     std::cout << "(Either true or false!): ";
     std::cin >> showResult;
 
-    int maxThreads = 0;
+    uint32_t maxThreads = 0;
     if (type == MULTICORE) {
-        std::cout << "Input the max amount of thread you wish to be used at a time: ";
+        std::cout << "Input the max amount of threads you wish to be used at a time: ";
         std::cin >> maxThreads;
     }
 
@@ -164,5 +163,5 @@ CurrentRun* identifyRun()
     std::cout << "(Default is 1000000000): ";
     std::cin >> maxNumber;
 
-    return new CurrentRun(type, showTime, showResult, maxThreads, maxNumber);
+    return {type, showTime, showResult, maxThreads, maxNumber};
 }
