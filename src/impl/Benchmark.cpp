@@ -3,7 +3,7 @@
 //
 
 // Implementation of
-#include "../include/Benchmark.h"
+#include "../include/Benchmark.hpp"
 
 #include <chrono>
 #include <vector>
