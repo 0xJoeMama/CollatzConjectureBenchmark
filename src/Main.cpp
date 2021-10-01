@@ -1,7 +1,8 @@
 //
 // Created by JoeMama on 26/09/2021.
 //
-
+#include <conio.h>
+#include <iostream>
 #include "include/Benchmark.hpp"
 
 int main()
@@ -19,4 +20,7 @@ int main()
             currentRun.runMulticore();
             break;
     }
+
+    std::cout << "Press any key to continue...";
+    _getch();
 }

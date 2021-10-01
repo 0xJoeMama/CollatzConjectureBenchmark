@@ -58,7 +58,7 @@ void CurrentRun::runMulticore() const
     const uint64_t numberPerThread = maxNumber / maxThreads;
 
     TimePoint start = std::chrono::system_clock::now();
-    for (int i = 0; i < this->maxThreads; ++i) {
+    for (uint32_t i = 0; i < this->maxThreads; ++i) {
         auto begin = i * numberPerThread;
         auto end = (1 + i) * numberPerThread;
 
@@ -112,10 +112,12 @@ Result CurrentRun::runTest(uint64_t begin, uint64_t end)
 
     for (uint64_t i = begin; i <= end; ++i) {
         if (i % 1000000UL == 0) {
+            mutex.lock();
             std::cout << "i = " << i << std::endl;
+            mutex.unlock();
         }
 
-        int iterationsForI = iterate(i);
+        uint32_t iterationsForI = iterate(i);
 
         if (iterationsForI > currentMax) {
             currentMax = iterationsForI;
@@ -144,12 +146,12 @@ CurrentRun identifyRun()
 
     bool showTime;
     std::cout << "Should the time the test took be shown?" << std::endl;
-    std::cout << "(Either true or false!): ";
+    std::cout << "(Either 0 or 1!): ";
     std::cin >> showTime;
 
     bool showResult;
     std::cout << "Should the results of the test be shown?" << std::endl;
-    std::cout << "(Either true or false!): ";
+    std::cout << "(Either 0 or 1!): ";
     std::cin >> showResult;
 
     uint32_t maxThreads = 0;
@@ -159,8 +161,7 @@ CurrentRun identifyRun()
     }
 
     uint64_t maxNumber = 1000000000UL;
-    std::cout << "Input the max number that you want the test to run at or leave empty for default!" << std::endl;
-    std::cout << "(Default is 1000000000): ";
+    std::cout << "Input the max number that you want the test to run at: " << std::endl;
     std::cin >> maxNumber;
 
     return {type, showTime, showResult, maxThreads, maxNumber};

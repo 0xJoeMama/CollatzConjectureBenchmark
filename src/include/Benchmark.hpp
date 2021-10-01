@@ -8,8 +8,8 @@
 
 struct Result
 {
-    const uint64_t maxIndex{};
-    const uint64_t iterationMax{};
+    uint64_t maxIndex;
+    uint64_t iterationMax;
 };
 
 enum RunType
