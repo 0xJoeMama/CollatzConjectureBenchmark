@@ -1,8 +1,9 @@
 //
 // Created by JoeMama on 26/09/2021.
 //
-#include <conio.h>
+
 #include <iostream>
+#include <conio.h>
 #include "include/Benchmark.hpp"
 
 int main()
