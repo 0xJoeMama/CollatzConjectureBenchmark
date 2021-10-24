@@ -1,2 +1,2 @@
 # CollatzConjectureBenchmark
-Single/multi core benchamrk for Windows.
+Single/multi core benchmark for Windows.
