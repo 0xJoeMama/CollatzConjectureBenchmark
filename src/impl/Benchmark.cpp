@@ -2,13 +2,13 @@
 // Created by JoeMama on 26/09/2021.
 //
 
-// Implementation of
 #include "../include/Benchmark.hpp"
 
 #include <chrono>
 #include <vector>
 #include <future>
 #include <iostream>
+#include <thread>
 
 typedef std::chrono::time_point<std::chrono::system_clock> TimePoint;
 
@@ -70,9 +70,7 @@ void CurrentRun::runMulticore() const
             end = this->maxNumber;
         }
 
-        std::future<Result> future = std::async(std::launch::async, runTest, begin, end);
-
-        futureResults.at(i) = std::move(future);
+        futureResults[i] = std::async(std::launch::async, runTest, begin, end);
     }
 
     for (auto& future: futureResults) {
