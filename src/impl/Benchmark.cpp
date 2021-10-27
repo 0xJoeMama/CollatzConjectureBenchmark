@@ -79,9 +79,6 @@ void CurrentRun::runMulticore() const
 
         if (result.iterationMax > currentMaxIterations) {
             currentMaxIterations = result.iterationMax;
-        }
-
-        if (result.maxIndex > currentMaxNumber) {
             currentMaxNumber = result.maxIndex;
         }
     }
@@ -129,19 +126,13 @@ Result CurrentRun::runTest(uint64_t begin, uint64_t end)
 
 CurrentRun identifyRun()
 {
-    RunType type;
-
     std::cout << "What type of test do you wish to do?" << std::endl;
     std::cout << "(Either SINGLECORE or MULTICORE!): ";
 
     std::string typeArg;
     std::cin >> typeArg;
 
-    if (typeArg == "MULTICORE") {
-        type = MULTICORE;
-    } else {
-        type = SINGLECORE;
-    }
+    RunType type = typeArg == "MULTICORE" ? RunType::MULTICORE : RunType::SINGLECORE;
 
     bool showTime;
     std::cout << "Should the time the test took be shown?" << std::endl;
@@ -154,7 +145,7 @@ CurrentRun identifyRun()
     std::cin >> showResult;
 
     uint32_t maxThreads = 0;
-    if (type == MULTICORE) {
+    if (type == RunType::MULTICORE) {
         std::cout << "Input the max amount of threads you wish to be used at a time: ";
         std::cin >> maxThreads;
     }

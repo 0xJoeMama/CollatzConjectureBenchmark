@@ -14,10 +14,10 @@ int main()
     CurrentRun currentRun = identifyRun();
 
     switch (currentRun.type) {
-        case SINGLECORE:
+        case RunType::SINGLECORE:
             currentRun.runSinglecore();
             break;
-        case MULTICORE:
+        case RunType::MULTICORE:
             currentRun.runMulticore();
             break;
     }
