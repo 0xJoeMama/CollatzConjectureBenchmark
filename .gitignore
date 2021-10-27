@@ -1,4 +1,8 @@
 # Project exclude paths
-/cmake-build-debug/
-/cmake-build-release/
+/cmake-build-debug-mingw-posix
+/cmake-build-release-mingw-posix
+/cmake-build-debug-visual-studio
+/cmake-build-release-visual-studio
 /.idea/
+/.vscode/
+/build/

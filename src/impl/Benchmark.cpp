@@ -11,6 +11,7 @@
 #include <thread>
 
 typedef std::chrono::time_point<std::chrono::system_clock> TimePoint;
+typedef std::chrono::duration<double, std::milli> Duration;
 
 static std::mutex mutex;
 
@@ -39,7 +40,7 @@ void CurrentRun::runSinglecore() const
     if (this->showTime) {
         TimePoint endingPoint = std::chrono::system_clock::now();
 
-        double elapsedTime = std::chrono::duration<double, std::milli>(endingPoint - startingPoint).count();
+        double elapsedTime = Duration(endingPoint - startingPoint).count();
         std::cout << "Elapsed time " << elapsedTime << " ms(" << elapsedTime / 1000 << " seconds)" << std::endl;
     }
 
@@ -90,7 +91,7 @@ void CurrentRun::runMulticore() const
     if (this->showTime) {
         TimePoint endingPoint = std::chrono::system_clock::now();
 
-        double elapsedTime = std::chrono::duration<double, std::milli>(endingPoint - start).count();
+        double elapsedTime = Duration(endingPoint - start).count();
         std::cout << "Elapsed time " << elapsedTime << " ms(" << elapsedTime / 1000 << " seconds)" << std::endl;
     }
 
