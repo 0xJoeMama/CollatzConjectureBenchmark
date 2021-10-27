@@ -8,4 +8,4 @@ add_executable(CollatzConjBenchmark src/Main.cpp src/impl/Benchmark.cpp)
 
 target_link_directories(CollatzConjBenchmark PUBLIC src/include)
 
-target_link_libraries(CollatzConjBenchmark PUBLIC -static-libstdc++ -static-libgcc)
+target_link_libraries(CollatzConjBenchmark PUBLIC -static-libstdc++ -static-libgcc winpthread)
