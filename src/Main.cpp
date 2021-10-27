@@ -23,5 +23,5 @@ int main()
     }
 
     std::cout << "Press any key to continue...";
-    _getch();
+    getch();
 }
