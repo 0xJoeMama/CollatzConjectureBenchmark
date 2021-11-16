@@ -51,14 +51,13 @@ void CurrentRun::runSinglecore() const
 
 void CurrentRun::runMulticore() const
 {
-    uint64_t currentMaxIterations = 0UL;
-    uint64_t currentMaxNumber = 0UL;
+    Result finalResult = {0};
 
     std::vector<std::future<Result>> futureResults(this->maxThreads);
 
     const uint64_t numberPerThread = maxNumber / maxThreads;
 
-    TimePoint start = std::chrono::system_clock::now();
+    const TimePoint start = std::chrono::system_clock::now();
     for (uint32_t i = 0; i < this->maxThreads; ++i) {
         auto begin = i * numberPerThread;
         auto end = (1 + i) * numberPerThread;
@@ -77,13 +76,11 @@ void CurrentRun::runMulticore() const
     for (auto& future: futureResults) {
         Result result = future.get();
 
-        if (result.iterationMax > currentMaxIterations) {
-            currentMaxIterations = result.iterationMax;
-            currentMaxNumber = result.maxIndex;
+        if (result.iterationMax > finalResult.iterationMax) {
+            finalResult.iterationMax = result.iterationMax;
+            finalResult.maxIndex = result.maxIndex;
         }
     }
-
-    Result finalResult = {currentMaxNumber, currentMaxIterations};
 
     if (this->showTime) {
         TimePoint endingPoint = std::chrono::system_clock::now();
