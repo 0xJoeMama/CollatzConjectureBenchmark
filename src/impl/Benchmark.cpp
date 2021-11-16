@@ -10,7 +10,9 @@
 #include <iostream>
 #include <thread>
 
-typedef std::chrono::time_point<std::chrono::system_clock> TimePoint;
+using std::chrono::system_clock;
+
+typedef std::chrono::time_point<system_clock> TimePoint;
 typedef std::chrono::duration<double, std::milli> Duration;
 
 static std::mutex mutex;
@@ -33,12 +35,12 @@ static int iterate(uint64_t number)
 
 void CurrentRun::runSinglecore() const
 {
-    TimePoint startingPoint = std::chrono::system_clock::now();
+    TimePoint startingPoint = system_clock::now();
 
     Result result = runTest(1, this->maxNumber);
 
     if (this->showTime) {
-        TimePoint endingPoint = std::chrono::system_clock::now();
+        TimePoint endingPoint = system_clock::now();
 
         double elapsedTime = Duration(endingPoint - startingPoint).count();
         std::cout << "Elapsed time " << elapsedTime << " ms(" << elapsedTime / 1000 << " seconds)" << std::endl;
@@ -57,7 +59,7 @@ void CurrentRun::runMulticore() const
 
     const uint64_t numberPerThread = maxNumber / maxThreads;
 
-    const TimePoint start = std::chrono::system_clock::now();
+    const TimePoint start = system_clock::now();
     for (uint32_t i = 0; i < this->maxThreads; ++i) {
         auto begin = i * numberPerThread;
         auto end = (1 + i) * numberPerThread;
@@ -83,7 +85,7 @@ void CurrentRun::runMulticore() const
     }
 
     if (this->showTime) {
-        TimePoint endingPoint = std::chrono::system_clock::now();
+        TimePoint endingPoint = system_clock::now();
 
         double elapsedTime = Duration(endingPoint - start).count();
         std::cout << "Elapsed time " << elapsedTime << " ms(" << elapsedTime / 1000 << " seconds)" << std::endl;
