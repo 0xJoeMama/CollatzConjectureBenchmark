@@ -2,7 +2,7 @@
 // Created by JoeMama on 26/09/2021.
 //
 
-#include "../include/Benchmark.hpp"
+#include "Benchmark.hpp"
 
 #include <chrono>
 #include <vector>

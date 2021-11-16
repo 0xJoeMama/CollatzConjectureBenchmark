@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "include/Benchmark.hpp"
+#include "Benchmark.hpp"
 
 int main()
 {
@@ -21,6 +21,8 @@ int main()
             break;
     }
 
-    std::cout << "Press ENTER key to continue...";
+    std::cout << "Press ENTER key to continue..." << std::endl;
     std::cin.get();
+
+    std::cout << sizeof(CurrentRun) << std::endl;
 }
