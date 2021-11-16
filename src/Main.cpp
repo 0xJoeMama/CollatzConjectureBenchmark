@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <conio.h>
 #include "include/Benchmark.hpp"
 
 int main()
@@ -22,6 +21,6 @@ int main()
             break;
     }
 
-    std::cout << "Press any key to continue...";
-    getch();
+    std::cout << "Press ENTER key to continue...";
+    std::cin.get();
 }
