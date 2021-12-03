@@ -23,6 +23,4 @@ int main()
 
     std::cout << "Press ENTER key to continue..." << std::endl;
     std::cin.get();
-
-    std::cout << sizeof(CurrentRun) << std::endl;
 }

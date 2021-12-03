@@ -57,7 +57,7 @@ void CurrentRun::runMulticore() const
 
     std::vector<std::future<Result>> futureResults(this->maxThreads);
 
-    const uint64_t numberPerThread = maxNumber / maxThreads;
+    uint64_t numberPerThread = maxNumber / maxThreads;
 
     const TimePoint start = system_clock::now();
     for (uint32_t i = 0; i < this->maxThreads; ++i) {
