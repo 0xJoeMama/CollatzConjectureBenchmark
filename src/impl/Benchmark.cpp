@@ -36,7 +36,6 @@ static int iterate(uint64_t number)
 void CurrentRun::runSinglecore() const
 {
     TimePoint startingPoint = system_clock::now();
-
     Result result = runTest(1, this->maxNumber);
 
     if (this->showTime) {
@@ -54,9 +53,7 @@ void CurrentRun::runSinglecore() const
 void CurrentRun::runMulticore() const
 {
     Result finalResult = {0};
-
     std::vector<std::future<Result>> futureResults(this->maxThreads);
-
     uint64_t numberPerThread = maxNumber / maxThreads;
 
     const TimePoint start = system_clock::now();
