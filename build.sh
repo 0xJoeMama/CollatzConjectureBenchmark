@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
-set -xe
+set -e
+
+if [ "$1" = "clean" ]; then
+    rm -rf "$PWD/build/"
+fi
 
 mkdir -p "$PWD/build/"
 cmake -B "$PWD/build"
