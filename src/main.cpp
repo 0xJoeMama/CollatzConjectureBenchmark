@@ -3,21 +3,21 @@
 //
 
 #include <iostream>
-#include "Benchmark.hpp"
+#include "benchmark.hpp"
 
 int main()
 {
     // this benchmark
     // it grinds nombers and tells you how long it took.
     // it also supports multithreading
-    CurrentRun currentRun = identifyRun();
+    clz_bench::current_run currentRun = clz_bench::identify_run();
 
     switch (currentRun.type) {
-        case RunType::SINGLECORE:
-            currentRun.runSinglecore();
+        case clz_bench::run_type::SINGLECORE:
+            currentRun.run_singlecore();
             break;
-        case RunType::MULTICORE:
-            currentRun.runMulticore();
+        case clz_bench::run_type::MULTICORE:
+            currentRun.run_multicore();
             break;
     }
 
