@@ -2,7 +2,7 @@
 // Created by JoeMama on 26/09/2021.
 //
 
-#include "benchmark.hpp"
+#include "../include/benchmark.hpp"
 
 #include <chrono>
 #include <vector>
@@ -98,7 +98,7 @@ void current_run::run_multicore() const
 clz_bench::result current_run::run_test(uint64_t begin, uint64_t end)
 {
     {
-        const std::lock_guard guard(mutex);
+        const std::lock_guard<std::mutex> guard(mutex);
         std::cout << "Thread " << std::this_thread::get_id() << " is starting!" << std::endl;
     }
 
@@ -107,7 +107,7 @@ clz_bench::result current_run::run_test(uint64_t begin, uint64_t end)
 
     for (uint64_t i = begin; i <= end; ++i) {
         if (i % 1000000UL == 0) {
-            const std::lock_guard guard(mutex);
+            const std::lock_guard<std::mutex> guard(mutex);
             std::cout << "i = " << i << std::endl;
         }
 

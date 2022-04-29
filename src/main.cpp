@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+
 #include "benchmark.hpp"
 
 int main()
@@ -20,7 +21,4 @@ int main()
             currentRun.run_multicore();
             break;
     }
-
-    std::cout << "Press ENTER key to continue..." << std::endl;
-    std::cin.get();
 }

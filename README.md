@@ -3,12 +3,12 @@ Single/multi core benchmark for Windows.
 
 # Building the project
 
-I am using CLion to develop this project. However if you are not you can still build it:
+There are executables already available but if you want you can build it yourself.
 
 Steps for build:
-- Install `cmake` and `make`.
-- Execute the `build.sh` script.
+- Install `make`.
+- Run this:
 ```shell
-$ ./build.sh
+$ make
 ```
-- You are done!
+- You are done! Check the `build` folder and you should find your executable in there.
