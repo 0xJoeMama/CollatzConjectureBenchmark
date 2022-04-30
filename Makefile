@@ -3,7 +3,7 @@ CXX=clang++
 
 CFLAGS=-Wall -Werror -pedantic -std=c++17 
 
-SRC=src/main.cpp src/impl/benchmark.cpp
+SRC=src/main.cpp src/lib/benchmark.cpp
 INCLUDE=include/
 
 LIBS=pthread
