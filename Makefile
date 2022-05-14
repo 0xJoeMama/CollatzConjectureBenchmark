@@ -26,3 +26,6 @@ strip:
 
 clean:
 	rm -rf build
+
+setup:
+	bear -- make

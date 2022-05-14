@@ -2,13 +2,13 @@
 // Created by JoeMama on 26/09/2021.
 //
 
-#include "../include/benchmark.hpp"
-
 #include <chrono>
 #include <vector>
 #include <future>
 #include <iostream>
 #include <thread>
+
+#include "benchmark.hpp"
 
 using std::chrono::system_clock;
 using clz_bench::run_type;
