@@ -1,7 +1,7 @@
 CC=clang
 CXX=clang++
 
-CFLAGS=-Wall -Werror -pedantic -std=c++17 
+CFLAGS=-Wall -Werror -pedantic -std=c++17 -pthread
 
 SRC=src/main.cpp src/lib/benchmark.cpp
 INCLUDE=include/
@@ -19,7 +19,7 @@ debug:
 
 release:
 	mkdir -p build
-	$(CXX) -I$(INCLUDE) -l$(LIBS) $(CFLAGS) -O3 $(SRC) -o build/$(NAME)
+	$(CXX) -I$(INCLUDE) -l$(LIBS) $(CFLAGS) -O3 $(SRC) -o build/$(NAME) 
 
 strip: 
 	strip build/$(NAME)
